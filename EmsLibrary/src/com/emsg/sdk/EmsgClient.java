@@ -207,7 +207,6 @@ public class EmsgClient implements Define {
             InterruptedException {
         holdPowerManager();
         this.socket = new Socket(EMSG_HOST, EMSG_PORT);
-        this.socket.setSoTimeout(socketTimeOut);
         reconnectSN = null;
         isClose = false;
         isLogOut.set(false);
