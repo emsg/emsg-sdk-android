@@ -24,6 +24,6 @@ EmsgClient为基于EmsLibrary使用demo
 
 联系方式：
 
-Ems Android交流群   84266683
+Ems Android交流群:   84266683
 
-Ems问题反馈邮箱    zhujohnle@gmail.com
+Ems问题反馈邮箱:    zhujohnle@gmail.com
