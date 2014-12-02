@@ -26,4 +26,4 @@ EmsgClient为基于EmsLibrary使用demo
 
 Ems Android交流群:   84266683
 
-Ems问题反馈邮箱:    zhujohnle@gmail.com
+Ems 问题反馈邮箱 :   zhujohnle@gmail.com
