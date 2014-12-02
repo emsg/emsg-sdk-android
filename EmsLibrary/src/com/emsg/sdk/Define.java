@@ -37,8 +37,8 @@ public interface Define {
     public static final int ACK_ENABLE = 1;
 
     static final String VSN = "0.0.1";
-    static String EMSG_HOST = "202.85.214.60";
+    static String EMSG_HOST = "server.lcemsg.com";
     static int EMSG_PORT = 4222;
-    static String TOKEN_HOST = "http://202.85.214.60/uptoken/";
+    static String TOKEN_HOST = "http://server.lcemsg.com/uptoken/";
 
 }
