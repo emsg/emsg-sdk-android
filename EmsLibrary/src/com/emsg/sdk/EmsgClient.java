@@ -236,7 +236,6 @@ public class EmsgClient implements Define {
      */
     public void closeClient() {
         releasePowerManager();
-        loop_queue.add(KILL);
         shutdown();
         stopEmsService();
     }
@@ -494,13 +493,13 @@ public class EmsgClient implements Define {
             try {
                 AlarmManager mAlarmManager = (AlarmManager) mAppContext
                         .getSystemService(Context.ALARM_SERVICE);
-                if (mHeartBeatReciver == null) {
+              /*  if (mHeartBeatReciver == null) {
                     mHeartBeatReciver = new HeartBeatReciver();
                     mAppContext.registerReceiver(mHeartBeatReciver, new IntentFilter(
                             "com.emsg.client"));
-                }
+                }*/
                 if (mPendingIntent == null) {
-                    Intent mIntent = new Intent("com.emsg.client");
+                    Intent mIntent = new Intent(mAppContext,HeartBeatReciver.class);
                     mPendingIntent = PendingIntent.getBroadcast(mAppContext, 0, mIntent, 0);
                 }
                 long mCurrentTimeMin = System.currentTimeMillis();
