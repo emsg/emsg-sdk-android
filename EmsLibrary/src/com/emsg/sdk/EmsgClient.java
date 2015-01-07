@@ -493,13 +493,13 @@ public class EmsgClient implements Define {
             try {
                 AlarmManager mAlarmManager = (AlarmManager) mAppContext
                         .getSystemService(Context.ALARM_SERVICE);
-              /*  if (mHeartBeatReciver == null) {
+                 if (mHeartBeatReciver == null) {
                     mHeartBeatReciver = new HeartBeatReciver();
                     mAppContext.registerReceiver(mHeartBeatReciver, new IntentFilter(
-                            "com.emsg.client"));
-                }*/
+                    		ACTION_HEATBEAT));
+                }
                 if (mPendingIntent == null) {
-                    Intent mIntent = new Intent(mAppContext,HeartBeatReciver.class);
+                    Intent mIntent = new Intent(ACTION_HEATBEAT);
                     mPendingIntent = PendingIntent.getBroadcast(mAppContext, 0, mIntent, 0);
                 }
                 long mCurrentTimeMin = System.currentTimeMillis();

@@ -61,7 +61,7 @@ public class PacketReader<T> implements Define {
                             }
                         }
                         if (client.listener != null) {
-                            System.out.println("reader :::> " + packet);
+                            EmsgClient.logger.info("reader :::> " + packet);
                             IPacket<DefPayload> p = client.getProvider().decode(packet);
                             int type = p.getEnvelope().getType();
                             if (MSG_TYPE_P2P_SOUND == type || MSG_TYPE_P2P_VIDEO == type) {

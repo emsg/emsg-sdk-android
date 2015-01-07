@@ -40,5 +40,7 @@ public interface Define {
     static String EMSG_HOST = "server.lcemsg.com";
     static int EMSG_PORT = 4222;
     static String TOKEN_HOST = "http://server.lcemsg.com/uptoken/";
+    
+    static final String ACTION_HEATBEAT = "com.emsg.client";
 
 }
