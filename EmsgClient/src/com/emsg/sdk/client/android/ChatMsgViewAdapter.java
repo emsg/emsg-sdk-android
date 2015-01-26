@@ -111,7 +111,10 @@ public class ChatMsgViewAdapter extends BaseAdapter {
 
         viewHolder.tvSendTime.setText(entity.getDate());
 
+        
+       
         if (entity.getType() != null && entity.getType().equals("audio")) {
+        	 final String content = entity.getText();
             new File(android.os.Environment.getExternalStorageDirectory() + "/emsg/receive/audio/")
                     .mkdirs();
             new File(android.os.Environment.getExternalStorageDirectory() + "/emsg/send/audio/")
@@ -124,11 +127,10 @@ public class ChatMsgViewAdapter extends BaseAdapter {
             viewHolder.tvTime.setText(entity.getTime());
 
             if (isComMsg) {
-                String key = entity.getText();
                 String filename = android.os.Environment.getExternalStorageDirectory()
-                        + "/emsg/receive/audio/" + key;
+                        + "/emsg/receive/audio/" + getKeyFroComingMsg(content);
                 if (!new File(filename).exists()) {
-                    new AudioTask(filename).execute(key);
+                    new AudioTask(filename).execute(content);
                 }
             }
             viewHolder.tvText.setOnClickListener(new OnClickListener() {
@@ -136,14 +138,16 @@ public class ChatMsgViewAdapter extends BaseAdapter {
                 public void onClick(View v) {
                     if (isComMsg) {
                         playMusic(android.os.Environment.getExternalStorageDirectory()
-                                + "/emsg/receive/audio/" + entity.getText());
+                                + "/emsg/receive/audio/" +getKeyFroComingMsg(content));
                     } else {
                         playMusic(android.os.Environment.getExternalStorageDirectory() + "/"
-                                + entity.getText());
+                                + content);
                     }
                 }
             });
         } else if (entity.getType() != null && entity.getType().equals("image")) {
+        	final String content = entity.getText();
+           
             viewHolder.tvText.setVisibility(View.GONE);
             viewHolder.tvImage.setVisibility(View.VISIBLE);
             viewHolder.tvTime.setText("");
@@ -158,16 +162,15 @@ public class ChatMsgViewAdapter extends BaseAdapter {
                     + "/emsg/send/image/original/").mkdirs();
 
             if (isComMsg) {
-                String key = entity.getText();
                 String filename = android.os.Environment.getExternalStorageDirectory()
-                        + "/emsg/receive/image/thumb/" + key;
+                        + "/emsg/receive/image/thumb/" + getKeyFroComingMsg(content);
                 if (new File(filename).exists()) {
                     Bitmap bMap = BitmapFactory.decodeFile(filename);
                     viewHolder.tvImage.setImageBitmap(bMap);
                 } else {
                     viewHolder.tvImage.setImageResource(R.drawable.loading);
                     String options = "imageView2/2/w/200/h/200";
-                    new ImageTask(viewHolder, filename).execute(filename, key, options);
+                    new ImageTask(viewHolder, filename).execute(filename, content, options);
                 }
             } else {
                 String filename = entity.getText();
@@ -230,6 +233,10 @@ public class ChatMsgViewAdapter extends BaseAdapter {
 
     }
 
+    
+    public String getKeyFroComingMsg(String content){
+    	 return content.substring(content.lastIndexOf("/"), content.length());
+    }
     private void stop() {
 
     }

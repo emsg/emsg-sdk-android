@@ -316,6 +316,7 @@ public class EmsgClient implements Define {
                                     runOnMainThread(new Runnable() {
                                         @Override
                                         public void run() {
+                                        	if(mEmsStateCallBack!=null)
                                             mEmsStateCallBack.onAnotherClientLogin();
                                         }
                                     });
