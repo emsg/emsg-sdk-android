@@ -235,6 +235,7 @@ public class EmsgClient implements Define {
      * 关闭Ems服务服务引擎
      */
     public void closeClient() {
+    	isLogOut.set(true);
         releasePowerManager();
         shutdown();
         stopEmsService();
