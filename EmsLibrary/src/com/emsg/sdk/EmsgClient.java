@@ -205,6 +205,7 @@ public class EmsgClient implements Define {
 
     private void initConnection() throws UnknownHostException, IOException,
             InterruptedException {
+    	shutdown();
         holdPowerManager();
         this.socket = new Socket(EMSG_HOST, EMSG_PORT);
         reconnectSN = null;
@@ -413,7 +414,7 @@ public class EmsgClient implements Define {
                 packetWriter = null;
             }
             heart_beat_ack = null;
-            if (socket != null && !socket.isClosed()) {
+            if (socket != null) {
                 socket.close();
             }
             logger.info("shutdown...");
