@@ -1,6 +1,10 @@
 
 package com.emsg.sdk.beans;
 
+
+import java.util.HashMap;
+import java.util.Map;
+
 import android.net.Uri;
 
 import android.os.Parcel;
@@ -54,6 +58,16 @@ public class EmsMessage implements Parcelable {
     private String contentLength = null;
     private String content = null;
     private Uri mFileUri;
+    
+    private HashMap<String,String> mExtendsMap;
+
+    public HashMap<String, String> getmExtendsMap() {
+		return mExtendsMap;
+	}
+
+	public void setmExtendsMap(HashMap<String, String> mExtendsMap) {
+		this.mExtendsMap = mExtendsMap;
+	}
 
     public Uri getmFileUri() {
         return mFileUri;
@@ -157,6 +171,7 @@ public class EmsMessage implements Parcelable {
         mParcel.writeString(contentLength);
         mParcel.writeInt(type);
         mParcel.writeLong(ct);
+        mParcel.writeMap(mExtendsMap);
         
     }
 
@@ -172,6 +187,7 @@ public class EmsMessage implements Parcelable {
             message.contentLength = source.readString();
             message.type = source.readInt();
             message.ct = source.readLong();
+            message.mExtendsMap=source.readHashMap(HashMap.class.getClassLoader());
             return message;
         }
 

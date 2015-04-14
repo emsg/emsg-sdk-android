@@ -28,6 +28,18 @@ public class DemoApplication extends Application {
             public void onAnotherClientLogin() {
                 Toast.makeText(DemoApplication.this, "被迫下线", Toast.LENGTH_LONG).show();
             }
+
+			@Override
+			public void onEmsgClosedListener() {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onEmsgOpenedListener() {
+				// TODO Auto-generated method stub
+				
+			}
         });
     }
 
